@@ -20,7 +20,7 @@
   src: url('/fonts/glyphicons-halflings-regular.eot'),
        url('/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
        url('/fonts/glyphicons-halflings-regular.woff') format('woff'),
-       url('/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('/fonts/glyphicons-halflings-regular.ttf') format('truetype')
 }
 
 body {
@@ -95,13 +95,13 @@ h4 {
 	border-color: transparent;
 	color: #fff !important;
 }
-
+  
 footer .glyphicon {
 	font-size: 20px;
 	margin-bottom: 20px;
 	color: #28ace5;
 }
-
+  
 .slideanim {
 	visibility:hidden;
 }
@@ -135,5 +135,94 @@ footer .glyphicon {
 	  -webkit-transform: translateY(0%);
 	}
 }
-
   
+.slider {
+  /* -webkit-appearance: none; */
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #28ace5;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #28ace5;
+  cursor: pointer;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    height: 100%;
+}
+
+.landing_container{
+    background-image: url('/static/images/bg/landing.webp');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing_content{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.landing_content>.container:hover{
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.img_fruits{
+    width: 80%;
+}
+
+.img_fruits_portrait{
+    width: 40%;
+}
+
+.floating_btn{
+	position: fixed;
+	right: 0;
+	top: 0;
+	visibility:hidden;
+}
+
+.btn_navigation{
+	width: 55px;
+	height: 55px;
+	background-color: transparent;
+	border: 2px solid #6f42c1;
+	border-radius: 30px;
+	margin-bottom: 0.5rem;
+	text-align: center;
+	color: #6f42c1;
+}
+
+.btn_navigation:hover{
+	width: 55px;
+	height: 55px;
+	background-color: #6f42c1;
+	border-radius: 30px;
+	text-align: center;
+	color: white;
+	transition: 0.3s;
+}
