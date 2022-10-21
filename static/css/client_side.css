@@ -226,3 +226,8 @@ body, html{
 	color: white;
 	transition: 0.3s;
 }
+
+#uploadedImg{
+	display: none;
+	height: 9em;
+}

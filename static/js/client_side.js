@@ -94,16 +94,14 @@ $(document).ready(function(){
     distance: '70%',
     origin: 'left',
     opacity: 0.2,
-    duration: 2000,
-    reset: true,
+    duration: 2000
   };
   
   var slideImgFromRight = {
     distance: '40%',
     origin: 'right',
     opacity: 0.2,
-    duration: 2000,
-    reset: true,
+    duration: 2000
   };
   
   var slideFruitNameFromRight = {
@@ -119,24 +117,22 @@ $(document).ready(function(){
     origin: 'left',
     opacity: 0,
     duration: 1000,
-    delay:1500,
   };
   
   var slideFromBottom = {
     distance: '70%',
     origin: 'bottom',
     opacity: 0,
-    duration: 2000,
-    delay:2000,
+    duration: 2500,
   };
   
   reveal('.img_fruits_left', slideImgFromLeft)
-  reveal('.fruits_name_right', slideFruitNameFromRight)
+  reveal('.label_name_right', slideFruitNameFromRight)
   
   reveal('.img_fruits_right', slideImgFromRight)
-  reveal('.fruits_name_left', slideFruitNameFromLeft)
+  reveal('.label_name_left', slideFruitNameFromLeft)
   
-  reveal('.fruits_desc', slideFromBottom)
+  reveal('.label_desc', slideFromBottom)
   
   
   //* hide navbar if landing page is visible
@@ -152,6 +148,15 @@ $(document).ready(function(){
   })
 
   
+  $('#btnUploadImg').click(()=>{
+
+    if($('#inputImg')[0].files.length != 0 ){
+      var uploadedImg = $('#inputImg').prop('files')
+
+      console.log(uploadedImg)
+    }
+  })
+
 })
 
 function scrollToView(destination){
@@ -184,4 +189,25 @@ function isInViewport(el) {
       ||  el.contains(efp(rect.right, rect.bottom))
       ||  el.contains(efp(rect.left,  rect.bottom))
     );
+}
+
+function onImgSelected(event){
+  var selectedImg = event.target.files[0]
+
+  if(typeof selectedImg === 'undefined'){
+    $('#uploadedImg').css('display', 'none')
+    $('#uploadedImgPlaceholder').css('display', 'block')
+  }else{
+    var reader = new FileReader()
+
+    var imgtag = $('#uploadedImg')[0]
+
+    reader.onload = function(event){
+      imgtag.src = event.target.result
+    }
+
+    reader.readAsDataURL(selectedImg)
+    $('#uploadedImg').css('display', 'block')
+    $('#uploadedImgPlaceholder').css('display', 'none')
+  }
 }
