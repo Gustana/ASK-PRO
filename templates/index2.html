@@ -41,7 +41,7 @@
                 </p>
 
                 <p class="fs-6 text-light mb-5 text-center">
-                    -- Gustana Satiawan
+                    <strong>Goldfarb-4</strong>
                 </p>
                 
                 <button id="btn_explore" type="button" class="btn btn-outline-warning rounded-pill w-50">
@@ -92,21 +92,25 @@
                             
                             <div class="mb-3 mt-5">
                                 <p class="fs-6">Please upload an image to predict</p>
-                                <input class="form-control w-75" type="file" id="inputImg" accept=".jpg, .png, .jpeg" 
+                                <input class="form-control w-75" type="file" name="file" id="inputImg" accept=".jpg, .png, .jpeg" 
                                 onchange="onImgSelected(event)" required>
                             </div>
-
-                            <button type="submit" class="btn btn-outline-warning w-50 mt-3" id="btnUploadImg">Predict</button>
                             
                         </form>
                     </div>
                 </div>
 
                 <div class="col-6 d-flex flex-column">
-                    <p class="h3">
+                    <p class="h3 label_name_right">
                         Prediction Result
                     </p>
-                    <img src="asset/fruits/banana.webp" alt="Banana" class="img_fruits_portrait img_fruits_right float-end">
+                    <div class="label_desc mt-3">
+                        <div class="spinner-border text-warning ms-5" role="status" id="predictLoad" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <i class="fa-solid fa-image fa-9x ms-3" id="predictIconPlaceholder"></i>
+                        <!-- <img src="asset/fruits/banana.webp" alt="Banana" class="img_fruits_portrait img_fruits_right float-end mt-3 ms-3"> -->
+                    </div>
                 </div>
             </div>
             
@@ -255,7 +259,7 @@
         </div>
     </footer>
     
-    <script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }}></script>
+    <script src={{ url_for('static', filename='/js/jquery_3.6.1.min.js') }}></script>
     <script src={{ url_for('static', filename='/js/bootstrap_5.2.2.min.js') }}></script>
     <script src={{ url_for('static', filename='/js/scroll_reveal_4.0.0.js') }}></script>
     <script src={{ url_for('static', filename='/js/client_side.js') }}></script>

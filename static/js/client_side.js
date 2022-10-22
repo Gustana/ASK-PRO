@@ -1,3 +1,18 @@
+//define font-awesome icon for prediction result
+
+var classification_icon_map = {
+  "airplane":"fa-plane", 
+  "automobile":"fa-car", 
+  "bird":"fa-dove", 
+  "cat":"fa-cat", 
+  "deer":"fa-horse-head", 
+  "dog":"fa-dog", 
+  "frog":"fa-frog", 
+  "horse":"fa-horse", 
+  "ship":"fa-ship", 
+  "truck":"fa-truck"
+}
+
 $(document).ready(function(){
   
   // -[Animasi Scroll]---------------------------
@@ -109,7 +124,6 @@ $(document).ready(function(){
     origin: 'right',
     opacity: 0,
     duration: 1000,
-    delay:1500,
   };
   
   var slideFruitNameFromLeft = {
@@ -139,22 +153,10 @@ $(document).ready(function(){
   document.addEventListener('scroll', ()=>{
     if(isInViewport($(".landing_container")[0])){
       $(".floating_btn").css('visibility', 'hidden')
-      console.log('hide')
     }else{
       $(".floating_btn").css('visibility', 'visible')
-      console.log('show')
     }
   
-  })
-
-  
-  $('#btnUploadImg').click(()=>{
-
-    if($('#inputImg')[0].files.length != 0 ){
-      var uploadedImg = $('#inputImg').prop('files')
-
-      console.log(uploadedImg)
-    }
   })
 
 })
@@ -192,11 +194,16 @@ function isInViewport(el) {
 }
 
 function onImgSelected(event){
+  //show loading
+  $('#predictLoad').css('display', 'block')
+  $('#predictIconPlaceholder').css('display', 'none')
   var selectedImg = event.target.files[0]
 
   if(typeof selectedImg === 'undefined'){
     $('#uploadedImg').css('display', 'none')
     $('#uploadedImgPlaceholder').css('display', 'block')
+
+    $('#predictLoad').css('display', 'none')
   }else{
     var reader = new FileReader()
 
@@ -209,5 +216,41 @@ function onImgSelected(event){
     reader.readAsDataURL(selectedImg)
     $('#uploadedImg').css('display', 'block')
     $('#uploadedImgPlaceholder').css('display', 'none')
+
+    predictImg(selectedImg)
+    
   }
+}
+
+function predictImg(uploadedImg){
+  let formData = new FormData()
+  formData.append('file', uploadedImg)
+
+  setTimeout(()=>{
+    try{
+      $.ajax({
+        url: 'api/deteksi',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: (response)=>{
+          res_data_prediksi   = response['prediksi']
+          res_gambar_prediksi = response['gambar_prediksi']
+        
+          // show prediction result to front-end
+          generatePrediction(res_data_prediksi); 
+        }
+      })
+    }catch(e){
+      console.log('unexpected error')
+    }
+  }, 1000)
+}
+
+function generatePrediction(prediction_class){
+  $('#predictIconPlaceholder').removeClass('fa-image').addClass(classification_icon_map[prediction_class])
+
+  $('#predictLoad').css('display', 'none')
+  $('#predictIconPlaceholder').css('display', 'block')
 }

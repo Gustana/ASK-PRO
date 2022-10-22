@@ -230,4 +230,9 @@ body, html{
 #uploadedImg{
 	display: none;
 	height: 9em;
+	width: 9em;
+}
+
+#predictLoad{
+	display: none;
 }
