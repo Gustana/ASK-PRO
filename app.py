@@ -40,10 +40,6 @@ cifar10_classes = ["airplane", "automobile", "bird", "cat", "deer",
 def beranda():
 	return render_template('index.html')
 
-@app.route("/2")
-def dummy():
-	return render_template('index2.html')
-
 # [Routing untuk API]	
 @app.route("/api/deteksi",methods=['POST'])
 def apiDeteksi():

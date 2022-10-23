@@ -1,171 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Judul Halaman -->
-	<title>Orbit Future Academy</title>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Icon -->
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-	
-	<!-- CSS -->
-	<link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap.min.css') }} type="text/css">
-	<link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}  type="text/css">
-	
-	<!-- JavaScript -->
-	<script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }} ></script>
-	<script src={{ url_for('static', filename='/js/bootstrap_3.4.1.min.js') }} ></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cv-Deployment</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap_5.2.2.min.css') }}>
 </head>
+<body>
+    <!-- * navbar -->
+    <nav class="floating_btn d-flex flex-column justify-content-center h-100" id="navbar">
+        <button class="btn_navigation" type="button" id="btn_landing_section" data-bs-toggle="tooltip" data-bs-placement="left" title="landing">
+            <i class="fa-solid fa-flag fa-xl p-2"></i>
+        </button>
 
-<body id="halamanku" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <button class="btn_navigation" type="button" id="btn_prediction_section" data-bs-toggle="tooltip" data-bs-placement="left" title="predict">
+            <i class="fa-solid fa-fan fa-xl p-2"></i>
+        </button>
 
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			
-			<!-- Logo -->
-			<div class="navbar-header">
-				<img src={{ url_for('static', filename='/images/orbit_logo.jpg') }} alt="Orbit Logo" 
-				width="50" height="50" align="left">
-				<a class="navbar-brand" href="#halamanku">&#160; Orbit Future Academy</a>
-			</div>
-			
-			<!-- Daftar Halaman -->
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#informasi">INFORMASI</a></li>
-					<li><a href="#aplikasi">APLIKASI</a></li>
-					<li><a href="#anggotaKelompok">ANGGOTA KELOMPOK</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+        <button class="btn_navigation" type="button" id="btn_footer_section" data-bs-toggle="tooltip" data-bs-placement="left" title="footer">
+            <i class="fa-solid fa-shoe-prints"></i>
+        </button>
 
-	<!-- Bagian Halaman (Informasi) -->
-	<div id="informasi" class="container-fluid">
-		<br>
-		<br>
-		<div class="row">
-			<div class="col-sm-6">
-				<h2>CIC</h2>
-				<h4>Cifar-10 Image Classification</h4><br>
-				<p style="text-align: justify;text-justify: inter-word;">
-					Aplikasi ini dibuat khusus untuk mendeteksi sebuah objek dari gambar yang diberikan.
-					Adapun dataset yang digunakan untuk model klasifikasi gambar ini adalah CIFAR-10. 
-					Pada dataset CIFAR-1, terdapat 10 objek yang dapat diklasifikasi yaitu pesawat, mobil, burung, kucing,
-					rusa, anjing, katak, kuda, kapal, dan truk.
-					Untuk dapat menggunakan aplikasi ini, pengguna hanya mengunggah sebuah gambar dengan format 'JPG'. 
-					Hasil deteksi objek akan ditampilkan setelah pengguna mengunggah gambar tersebut.
-				</p>
-				<br>
+    </nav>
 
-				<!-- Tombol Mulai -->
-				<nav id="navgo" class="navbar" style="background-color:#ffffff;z-index: 0;">
-					<ul class="nav nav-pills">
-						<li class="nav-item">
-							<a class="btn btn-default btn-lg" href="#aplikasi" style="background-color:#28ace5">Mulai</a>
-						</li>
-					</ul>
-				</nav>
+    <div class="landing_container">
 
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<br>
-				<!-- Gambar Deskripsi Aplikasi -->
-				<div align="center">
-					<img src={{ url_for('static', filename='/images/app-display.JPG') }} height="300" ></img>
-				</div>
-			</div>
-		</div>
-		<br>
-	</div>
+        <div class="landing_content d-flex justify-content-center align-items-center">
 
+            <div class="container d-flex flex-column justify-content-center align-items-center border border-white rounded-3 p-5 w-50">
+            
+                <p class="fs-2 text-light text-center">
+                    Computer Vision Project
+                </p>
 
-	<!-- Bagian Halaman (Aplikasi) -->
-	<div id="aplikasi" data-bs-spy="scroll" data-bs-target="#navgo" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-		<br>
-		<br>
-		<div class="row">
-			<div class="col-sm-6">
-				</br>
-				<h3 style="margin-left: 50px;">Upload Gambar </h3>
-					<form style="margin-left: 50px;">
-						<!-- Input atau Upload Gambar dari Pengguna -->
-						<img src={{ url_for('static', filename='/images/ex-upload.JPG') }} width="300" ></img>
-						<p>silahkan upload sebuah gambar</p>
-						<p>
-							<input type="file" id="input_gambar" name="file">
-						</p>
-						</br>
-						<!-- Tombol Prediksi -->
-						<button type="submit" id="prediksi_submit" class="btn btn-default btn-lg">Prediksi</button>
-					</form>
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<!-- Bagian Halaman untuk Hasil Prediksi -->
-				<div id="hasil_prediksi" align="center">
-					<!-- Hasil Prediksi akan ditampilkan di sini-->
-				</div>
-			</div>
-		</div>
-		</br>
-		</br>
-		</br>
-		</br>
-	</div>
+                <p class="fs-4 text-light text-center">
+                    CIFAR-10 Image Classification
+                </p>
 
-	<!-- Bagian Halaman (Anggota Kelompok) -->
-	<div id="anggotaKelompok" class="container-fluid text-center">
-		<br>
-		<h2>ANGGOTA KELOMPOK</h2>
-		<h4>Tim Deployment dan Tim CV</h4>
-		<br>
-		<div class="row slideanim">
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>BUDI</h4>
-				<p>Universitas Sumatera</p>
-			</div>
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>AYU</h4>
-				<p>Universitas Jawa dan Bali</p>
-			</div>
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>TONO</h4>
-				<p>Universitas Kalimantan</p>
-			</div>
-		</div>
-	    <br>
-	    <div class="row slideanim">
-			<div class="col-sm-6">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>PUTRA</h4>
-				<p>Universitas Sulawesi</p>
-			</div>
-			<div class="col-sm-6">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>PUTRI</h4>
-				<p>Universitas Kepulauan Nusa, Maluku dan Papua</p>
-			</div>
-	    </div>
-	</div>
+                <p class="fs-6 text-light mb-5 text-center">
+                    <strong>Goldfarb-4</strong>
+                </p>
+                
+                <button id="btn_explore" type="button" class="btn btn-outline-warning rounded-pill w-50">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Explore
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    
 
-	<!-- Footer -->
-	<footer class="container-fluid text-center">
-		<a href="#halamanku" title="To Top">
-			<span class="glyphicon glyphicon-chevron-up"></span>
-		</a>
-		<p>Orbit Future Academy <br> <a href="https://orbitfutureacademy.id/">orbitfutureacademy.id</a></p>
-	</footer>
+    <div class="content_container container-fluid">
 
-	<!-- JavaScript untuk Animasi Scroll dan Prediksi Model -->
-	<script  src={{ url_for('static', filename='/js/client_side.js') }}></script>
+        <div class="mt-5 container-lg bg-dark p-5 rounded-3">
+            <div class="row">
+                <div class="col-6">
+                    <img src={{ url_for("static", filename='/images/app-display.jpg') }} class="img_fruits img_fruits_left">
+                </div>
+                <div class="col-5 d-flex flex-column justify-content-center text-white">
+                    <p class="label_name_right h3">
+                        Dataset
+                    </p>
+                    <div class="label_desc ms-3">
+                        <p class="fs-6" style="text-align: justify;">
+                            Aplikasi ini dibuat khusus untuk mendeteksi sebuah objek dari gambar yang diberikan. Adapun dataset yang digunakan 
+                            untuk model klasifikasi gambar ini adalah CIFAR-10. Pada dataset CIFAR-1, terdapat 10 objek yang dapat diklasifikasi 
+                            yaitu pesawat, mobil, burung, kucing, rusa, anjing, katak, kuda, kapal, dan truk. Untuk dapat menggunakan aplikasi ini, 
+                            pengguna hanya mengunggah sebuah gambar dengan format 'JPG'. Hasil deteksi objek akan ditampilkan setelah pengguna 
+                            mengunggah gambar tersebut.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
+        <div class="mt-2 container-lg bg-dark p-5 rounded-3 text-white">
+            <div class="row">
+                <div class="col-6 d-flex flex-column justify-content-center">
+                    <p class="label_name_left h3">
+                        Upload an Image
+                    </p>
+                    <div class="label_desc mt-3 ms-3">
+                        <form class="d-flex flex-column" onsubmit="return false">
+                            <i class="fa-solid fa-image fa-9x" id="uploadedImgPlaceholder"></i>
+                            <img alt="Uploaded Img" id="uploadedImg">
+                            
+                            <div class="mb-3 mt-5">
+                                <p class="fs-6">Please upload an image to predict</p>
+                                <input class="form-control w-75" type="file" name="file" id="inputImg" accept=".jpg, .png, .jpeg" 
+                                onchange="onImgSelected(event)" required>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-6 d-flex flex-column">
+                    <p class="h3 label_name_right">
+                        Prediction Result
+                    </p>
+                    <div class="label_desc mt-3">
+                        <div class="spinner-border text-warning ms-5" role="status" id="predictLoad" style="width: 3rem; height: 3rem;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <i class="fa-solid fa-image fa-9x ms-3" id="predictIconPlaceholder"></i>
+                        <p class="fs-4 ms-4 text-warning" id="predictionResTxt">Car</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="bg-dark text-center text-white mt-5 footer">
+        
+        <div class="mt-2 container-lg bg-dark p-5 rounded-3 text-white">
+            <div class="row">
+                <p class="h1">Team</p>
+            </div>
+            <div class="d-flex flex-column mt-5">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>Gustana</h4>
+                        <p>Universitas Atma Jaya Yogyakarta</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>AYU</h4>
+                        <p>Universitas Jawa dan Bali</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>TONO</h4>
+                        <p>Universitas Kalimantan</p>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-sm-6">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>PUTRA</h4>
+                        <p>Universitas Sulawesi</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>PUTRI</h4>
+                        <p>Universitas Kepulauan Nusa, Maluku dan Papua</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright: Gustana <strong>Goldfarb-4</strong>
+        </div>
+    </footer>
+    
+    <script src={{ url_for('static', filename='/js/jquery_3.6.1.min.js') }}></script>
+    <script src={{ url_for('static', filename='/js/bootstrap_5.2.2.min.js') }}></script>
+    <script src={{ url_for('static', filename='/js/scroll_reveal_4.0.0.js') }}></script>
+    <script src={{ url_for('static', filename='/js/client_side.js') }}></script>
+    <script src="https://kit.fontawesome.com/ac3d771995.js" crossorigin="anonymous"></script>
 </body>
 </html>
