@@ -13,6 +13,8 @@ var classification_icon_map = {
   "truck":"fa-truck"
 }
 
+var prediction_glob_class = ''
+
 $(document).ready(function(){
   
   // -[Animasi Scroll]---------------------------
@@ -197,6 +199,7 @@ function onImgSelected(event){
   //show loading
   $('#predictLoad').css('display', 'block')
   $('#predictIconPlaceholder').css('display', 'none')
+  $('#predictionResTxt').css('display', 'none')
   var selectedImg = event.target.files[0]
 
   if(typeof selectedImg === 'undefined'){
@@ -204,6 +207,7 @@ function onImgSelected(event){
     $('#uploadedImgPlaceholder').css('display', 'block')
 
     $('#predictLoad').css('display', 'none')
+    $('#predictionResTxt').css('display', 'none')
   }else{
     var reader = new FileReader()
 
@@ -249,8 +253,15 @@ function predictImg(uploadedImg){
 }
 
 function generatePrediction(prediction_class){
-  $('#predictIconPlaceholder').removeClass('fa-image').addClass(classification_icon_map[prediction_class])
+  prediction_glob_class = classification_icon_map[prediction_class]
+  $('#predictIconPlaceholder').removeClass('fa-image '+prediction_glob_class).addClass(prediction_glob_class)
 
   $('#predictLoad').css('display', 'none')
   $('#predictIconPlaceholder').css('display', 'block')
+
+  //show prediction text and set the value
+  $('#predictionResTxt').css('display', 'block')
+  $('#predictionResTxt').text(prediction_class)
+
+  console.log(prediction_class)
 }

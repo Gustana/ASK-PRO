@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fruit Inventory</title>
+    <title>Cv-Deployment</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap_5.2.2.min.css') }}>
@@ -59,7 +61,7 @@
         <div class="mt-5 container-lg bg-dark p-5 rounded-3">
             <div class="row">
                 <div class="col-6">
-                    <img src={{ url_for("static", filename='/images/app-display.jpg') }} alt="Apple" class="img_fruits img_fruits_left">
+                    <img src={{ url_for("static", filename='/images/app-display.jpg') }} class="img_fruits img_fruits_left">
                 </div>
                 <div class="col-5 d-flex flex-column justify-content-center text-white">
                     <p class="label_name_right h3">
@@ -109,149 +111,52 @@
                             <span class="visually-hidden">Loading...</span>
                         </div>
                         <i class="fa-solid fa-image fa-9x ms-3" id="predictIconPlaceholder"></i>
-                        <!-- <img src="asset/fruits/banana.webp" alt="Banana" class="img_fruits_portrait img_fruits_right float-end mt-3 ms-3"> -->
+                        <p class="fs-4 ms-4 text-warning" id="predictionResTxt">Car</p>
                     </div>
                 </div>
             </div>
             
         </div>
-
-        <!--
-
-        <div class="mt-2 container-lg bg-dark p-5 rounded-3">
-            <div class="row">
-                <div class="col-7">
-                    <img src="asset/fruits/kiwi.webp" alt="Kiwi" class="img_fruits img_fruits_left">
-                </div>
-
-                <div class="col-4 d-flex flex-column justify-content-center text-light">
-                    <p class="fruits_name_right h3">
-                        Kiwi
-                    </p>
-                    <div class="fruits_desc">
-                        <p class="fs-5">
-                            Kiwis are small fruits that pack a lot of flavor and plenty of vitamins, minerals, and powerful plant compounds.
-                        </p>
-                        <ul>
-                            <li>Calories: 64</li>
-                            <li>Vitamin C: 83% of the Daily Value (DV)</li>
-                            <li>Carbs: 14 grams</li>
-                            <li>Fiber: 3 grams</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="mt-2 container-lg bg-light p-5 rounded-3">
-            <div class="row">
-                <div class="col-4 d-flex flex-column justify-content-center text-dark">
-                    <p class="fruits_name_left h3">
-                        Strawberry
-                    </p>
-                    <div class="fruits_desc">
-                        <p class="fs-5">
-                            Kiwis are small fruits that pack a lot of flavor and plenty of vitamins, minerals, and powerful plant compounds.
-                        </p>
-                        <ul>
-                            <li>Calories: 64</li>
-                            <li>Vitamin C: 83% of the Daily Value (DV)</li>
-                            <li>Carbs: 14 grams</li>
-                            <li>Fiber: 3 grams</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-7">
-                    <img src="asset/fruits/strawberry.webp" alt="Strawberry" class="img_fruits img_fruits_right float-end">
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="mt-2 container-lg bg-dark p-5 rounded-3">
-            <div class="row">
-                <div class="col-7">
-                    <img src="asset/fruits/watermelon.webp" alt="Watermelon" class="img_fruits_portrait img_fruits_left">
-                </div>
-
-                <div class="col-4 d-flex flex-column justify-content-center text-light">
-                    <p class="fruits_name_right h3">
-                        Watermelon
-                    </p>
-                    <div class="fruits_desc">
-                        <p class="fs-5">
-                            Watermelon contains a variety of nutrients, including potassium, magnesium, and vitamins A and C.
-                        </p>
-                        <ul>
-                            <li>Calories: 46</li>
-                            <li>Vitamin A: 5% of the Daily Value (DV)</li>
-                            <li>Carbs: 11.5 grams</li>
-                            <li>Fiber: 0.6 grams</li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        -->
     </div>
 
-    
-
     <footer class="bg-dark text-center text-white mt-5 footer">
-        <div class="container-fluid p-4">
-
-            <section class="mb-4">    
-    
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                ><i class="fab fa-instagram"></i
-                ></a>
         
-    
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                ><i class="fab fa-linkedin-in"></i
-                ></a>
-        
-    
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-                ><i class="fab fa-github"></i
-                ></a>
-            </section>
-
-            <section class="">
-                <form action="">
-    
-                <div class="row d-flex justify-content-center">
-        
-                    <div class="col-auto">
-                    <p class="pt-2">
-                        <strong>Sign up for get in touch</strong>
-                    </p>
+        <div class="mt-2 container-lg bg-dark p-5 rounded-3 text-white">
+            <div class="row">
+                <p class="h1">Team</p>
+            </div>
+            <div class="d-flex flex-column mt-5">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>Gustana</h4>
+                        <p>Universitas Atma Jaya Yogyakarta</p>
                     </div>
-        
-                    <div class="col-md-5 col-12">
-        
-                    <div class="form-outline form-white mb-4">
-                        <input type="email" id="form5Example21" class="form-control" />
-                        <label class="form-label" for="form5Example21">Email address</label>
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>AYU</h4>
+                        <p>Universitas Jawa dan Bali</p>
                     </div>
+                    <div class="col-sm-4">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>TONO</h4>
+                        <p>Universitas Kalimantan</p>
                     </div>
-        
-                    <div class="col-auto">
-        
-                    <button type="submit" class="btn btn-outline-light mb-4">
-                        Subscribe
-                    </button>
-                    </div>
-        
                 </div>
-    
-                </form>
-            </section>
-
+                
+                <div class="row mt-4">
+                    <div class="col-sm-6">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>PUTRA</h4>
+                        <p>Universitas Sulawesi</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <h4>PUTRI</h4>
+                        <p>Universitas Kepulauan Nusa, Maluku dan Papua</p>
+                    </div>
+                </div>
+            </div>
         </div>
     
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

@@ -236,3 +236,7 @@ body, html{
 #predictLoad{
 	display: none;
 }
+
+#predictionResTxt{
+	display: none;
+}
