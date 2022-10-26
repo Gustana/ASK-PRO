@@ -198,7 +198,7 @@ function isInViewport(el) {
 function onImgSelected(event){
   //show loading
   $('#predictLoad').css('display', 'block')
-  $('#predictIconPlaceholder').css('display', 'none')
+  // $('#predictIconPlaceholder').css('display', 'none')
   $('#predictionResTxt').css('display', 'none')
   var selectedImg = event.target.files[0]
 
@@ -254,10 +254,10 @@ function predictImg(uploadedImg){
 
 function generatePrediction(prediction_class){
   prediction_glob_class = classification_icon_map[prediction_class]
-  $('#predictIconPlaceholder').removeClass('fa-image '+prediction_glob_class).addClass(prediction_glob_class)
+  // $('#predictIconPlaceholder').removeClass('fa-image '+prediction_glob_class).addClass(prediction_glob_class)
 
   $('#predictLoad').css('display', 'none')
-  $('#predictIconPlaceholder').css('display', 'block')
+  // $('#predictIconPlaceholder').css('display', 'block')
 
   //show prediction text and set the value
   $('#predictionResTxt').css('display', 'block')
