@@ -1,5 +1,5 @@
 /model_cifar10_cnn_tf.h5
 __pycache__/*
 static/images/fruits/*
-static/images/bg/
 static/images/uploads/*
+*.pkl

@@ -41,58 +41,70 @@ $(document).ready(function(){
     });
   });
 
-  
-  // -[Prediksi Model]---------------------------
-  
-  // Fungsi untuk memanggil API ketika tombol prediksi ditekan
-  $("#prediksi_submit").click(function(e) {
-    e.preventDefault();
-	
-	// Set data pengukuran bunga iris dari input pengguna
-    var input_sepal_length = $("#range_sepal_length").val(); 
-	var input_sepal_width  = $("#range_sepal_width").val(); 
-	var input_petal_length = $("#range_petal_length").val(); 
-	var input_petal_width  = $("#range_petal_width").val(); 
+  $('#predict_comment').click(function(e){
+    e.preventDefault()
 
-	// Panggil API dengan timeout 1 detik (1000 ms)
-    setTimeout(function() {
-	  try {
-			$.ajax({
-			  url  : "/api/deteksi",
-			  type : "POST",
-			  data : {"sepal_length" : input_sepal_length,
-					  "sepal_width"  : input_sepal_width,
-					  "petal_length" : input_petal_length,
-					  "petal_width"  : input_petal_width,
-			         },
-			  success:function(res){
-				// Ambil hasil prediksi spesies dan path gambar spesies dari API
-				res_data_prediksi   = res['prediksi']
-				res_gambar_prediksi = res['gambar_prediksi']
-				
-				// Tampilkan hasil prediksi ke halaman web
-			    generate_prediksi(res_data_prediksi, res_gambar_prediksi); 
-			  }
-			});
-		}
-		catch(e) {
-			// Jika gagal memanggil API, tampilkan error di console
-			console.log("Gagal !");
-			console.log(e);
-		} 
-    }, 1000)
-    
+    setTimeout(function(){
+      try{
+        $.ajax({
+          url: '/api/sentiment_analysis_text',
+          type: 'POST',
+          data:{
+            'comment': $('#comment').val()
+          },
+          success: function(res){
+            console.log(res)
+            alert('Sentiment: ' + res.sentiment)
+          }
+        })
+      }catch(e){
+        console.log(e)
+      }
+    }, 2000)
+
   })
-    
-  // Fungsi untuk menampilkan hasil prediksi model
-  function generate_prediksi(data_prediksi, image_prediksi) {
-    var str="";
-    str += "<h3>Hasil Prediksi </h3>";
-    str += "<br>";
-    str += "<img src='" + image_prediksi + "' width=\"200\" height=\"150\"></img>"
-    str += "<h3>" + data_prediksi + "</h3>";
-    $("#hasil_prediksi").html(str);
+
+  $('#brand_select').on('change', function(){
+    cls = this.value
+
+    setTimeout(function(){
+      try{
+        $.ajax({
+          url: '/api/sentiment_analysis_brand',
+          type: 'POST',
+          data:{
+            'class': cls
+          },
+          success: function(res){
+            console.log(res)
+            generate_brand_img(cls)
+            showSentiment(res.positive_sentiment, res.negative_sentiment)
+          }
+        })
+      }catch(e){
+        console.log(e)
+      }
+    }, 2000)
+  })
+
+
+  function generate_brand_img(cls){
+    $('.sentiment_col').css('display', 'block')
+    img = $('#brand_img_prediction')
+    if(cls=='scarlet'){
+      img.attr('src', '../static/images/brand/scarlet.webp')
+    }else if(cls=='wardah'){
+      img.attr('src', '../static/images/brand/wardah.webp')
+    }else if(cls=='mustika'){
+      img.attr('src', '../static/images/brand/mustika.webp')
+    }
   }
+
+  function showSentiment(positive, negative){
+    $('#positive_sentiment').text('Positive: '+positive+'%')
+    $('#negative_sentiment').text('Negative: '+negative+'%')
+  }
+    
 
   //!code from dummy web
   $('#btn_explore').click(()=>{

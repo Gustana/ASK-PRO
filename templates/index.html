@@ -1,127 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cv-Deployment</title>
+    <title>ASK-PRO</title>
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-    <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap_5.2.2.min.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/client_side.css' ) }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='/css/bootstrap_5.2.2.min.css' ) }}>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
+
 </head>
+
 <body>
     <!-- * navbar -->
-    <nav class="floating_btn d-flex flex-column justify-content-center h-100" id="navbar">
-        <button class="btn_navigation" type="button" id="btn_landing_section" data-bs-toggle="tooltip" data-bs-placement="left" title="landing">
+    <!-- <nav class="floating_btn d-flex flex-column justify-content-center h-100" id="navbar">
+        <button class="btn_navigation" type="button" id="btn_landing_section" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="landing">
             <i class="fa-solid fa-flag fa-xl p-2"></i>
         </button>
 
-        <button class="btn_navigation" type="button" id="btn_prediction_section" data-bs-toggle="tooltip" data-bs-placement="left" title="predict">
+        <button class="btn_navigation" type="button" id="btn_prediction_section" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="predict">
             <i class="fa-solid fa-fan fa-xl p-2"></i>
         </button>
 
-        <button class="btn_navigation" type="button" id="btn_footer_section" data-bs-toggle="tooltip" data-bs-placement="left" title="footer">
+        <button class="btn_navigation" type="button" id="btn_footer_section" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="footer">
             <i class="fa-solid fa-shoe-prints"></i>
         </button>
 
-    </nav>
+    </nav> -->
 
-    <div class="landing_container">
+    <div class="landing_container p-5">
 
-        <div class="landing_content d-flex justify-content-center align-items-center">
-
-            <div class="container d-flex flex-column justify-content-center align-items-center border border-white rounded-3 p-5 w-50">
-            
-                <p class="fs-2 text-light text-center">
-                    Computer Vision Project
-                </p>
-
-                <p class="fs-4 text-light text-center">
-                    CIFAR-10 Image Classification
-                </p>
-
-                <p class="fs-6 text-light mb-5 text-center">
-                    <strong>Goldfarb-4</strong>
-                </p>
-                
-                <button id="btn_explore" type="button" class="btn btn-outline-warning rounded-pill w-50">
-                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    Explore
-                </button>
-            </div>
-            
+        <div class="row">
+            <img id="team_logo" src="../static/images/team_logo.webp" alt="">
         </div>
-    </div>
-    
 
-    <div class="content_container container-fluid">
-
-        <div class="mt-5 container-lg bg-dark p-5 rounded-3">
+        <div class="d-flex flex-column justify-content-center h-100">
             <div class="row">
                 <div class="col-6">
-                    <img src={{ url_for("static", filename='/images/app-display.jpg') }} class="img_fruits img_fruits_left">
+                    <p class="h4">Solution of your</p>
+                    <p class="h1 text-primary">Beauty Brand Confusion</p>
+                    <p class="h5 mt-3">Have you ever confused to pick which brand to buy for your beauty treatment?</p>
+                    <p class="h5">Now, you don't have to worry anymore</p>
+                    <p class="h5">We provide you the best brand according to the buyers</p>
+
+                    <!-- <button class="mt-5 btn btn-info w-25">Explore</button> -->
                 </div>
-                <div class="col-5 d-flex flex-column justify-content-center text-white">
-                    <p class="label_name_right h3">
-                        Dataset
-                    </p>
-                    <div class="label_desc ms-3">
-                        <p class="fs-6" style="text-align: justify;">
-                            Aplikasi ini dibuat khusus untuk mendeteksi sebuah objek dari gambar yang diberikan. Adapun dataset yang digunakan 
-                            untuk model klasifikasi gambar ini adalah CIFAR-10. Pada dataset CIFAR-1, terdapat 10 objek yang dapat diklasifikasi 
-                            yaitu pesawat, mobil, burung, kucing, rusa, anjing, katak, kuda, kapal, dan truk. Untuk dapat menggunakan aplikasi ini, 
-                            pengguna hanya mengunggah sebuah gambar dengan format 'JPG'. Hasil deteksi objek akan ditampilkan setelah pengguna 
-                            mengunggah gambar tersebut.
-                        </p>
-                    </div>
+                <div class="col-6 d-flex justify-content-end" style="margin-top: -80px;">
+                    <img class="" id="landing_img" src="../static/images/landing.webp" alt="">
                 </div>
             </div>
-            
         </div>
 
-        <div class="mt-2 container-lg bg-dark p-5 rounded-3 text-white">
-            <div class="row">
-                <div class="col-6 d-flex flex-column justify-content-center">
-                    <p class="label_name_left h3">
-                        Upload an Image
-                    </p>
-                    <div class="label_desc mt-3 ms-3">
-                        <form class="d-flex flex-column" onsubmit="return false">
-                            <i class="fa-solid fa-image fa-9x" id="uploadedImgPlaceholder"></i>
-                            <img alt="Uploaded Img" id="uploadedImg">
-                            
-                            <div class="mb-3 mt-5">
-                                <p class="fs-6">Please upload an image to predict</p>
-                                <input class="form-control w-75" type="file" name="file" id="inputImg" accept=".jpg, .png, .jpeg" 
-                                onchange="onImgSelected(event)" required>
-                            </div>
-                            
-                        </form>
-                    </div>
-                </div>
+    </div>
 
-                <div class="col-6 d-flex flex-column">
-                    <p class="h3 label_name_right">
-                        Prediction Result
-                    </p>
-                    <div class="label_desc mt-3">
-                        <div class="spinner-border text-warning ms-5" role="status" id="predictLoad" style="width: 3rem; height: 3rem;">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <!-- <i class="fa-solid fa-image fa-9x ms-3" id="predictIconPlaceholder"></i> -->
-                        <p class="fs-4 ms-4 text-warning" id="predictionResTxt">Car</p>
+    <div class="brand_pick_section p-5">
+        <div class="row">
+            <div class="col-7">
+                <p class="h5">Let's get your best cosmetic brand</p>
+                <div class="mt-3">
+                    <select class="form-select w-50" id="brand_select">
+                        <option value="" selected disabled>Select a Brand</option>
+                        <option value="scarlet">Scarlett Whitening</option>
+                        <option value="wardah">Wardah Cosmetic</option>
+                        <option value="mustika">Mustika Ratu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4 sentiment_col" style="display: none;">
+                <div class="row">
+                    <div class="col-8">
+                        <img id="brand_img_prediction" class="justify-content-end">
+                    </div>
+                    <div class="col-4">
+                        <p class="h5">Sentiment</p>
+                        <p class="h6" id="positive_sentiment"></p>
+                        <p class="h6" id="negative_sentiment"></p>
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 
-    <footer class="bg-dark text-center text-white mt-5 footer">
-        
-        <div class="mt-2 container-lg bg-dark p-5 rounded-3 text-white">
+    <div class="try_comment_section p-5">
+        <p class="h5">Let's try a comment</p>
+        <div class="mt-3">
+                <div class="mb-3 w-25">
+                  <textarea type="text" class="form-control" id="comment"></textarea>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="predict_comment">Submit</button>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-center text-white footer">
+
+        <div class="container-lg bg-dark p-5 rounded-3 text-white">
             <div class="row">
                 <p class="h1">Team</p>
             </div>
@@ -143,7 +124,7 @@
                         <p>Uiversitas Amikom Purwokerto</p>
                     </div>
                 </div>
-                
+
                 <div class="row mt-4">
                     <div class="col-sm-6">
                         <i class="fa-solid fa-user fa-2x"></i>
@@ -158,14 +139,15 @@
                 </div>
             </div>
         </div>
-    
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2022</div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© Amigo 2022</div>
     </footer>
-    
-    <script src={{ url_for('static', filename='/js/jquery_3.6.1.min.js') }}></script>
-    <script src={{ url_for('static', filename='/js/bootstrap_5.2.2.min.js') }}></script>
-    <script src={{ url_for('static', filename='/js/scroll_reveal_4.0.0.js') }}></script>
-    <script src={{ url_for('static', filename='/js/client_side.js') }}></script>
+
+    <script src={{ url_for('static', filename='/js/jquery_3.6.1.min.js' ) }}></script>
+    <script src={{ url_for('static', filename='/js/bootstrap_5.2.2.min.js' ) }}></script>
+    <script src={{ url_for('static', filename='/js/scroll_reveal_4.0.0.js' ) }}></script>
+    <script src={{ url_for('static', filename='/js/client_side.js' ) }}></script>
     <script src="https://kit.fontawesome.com/ac3d771995.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
