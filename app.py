@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,jsonify
 from werkzeug.utils import secure_filename
-import math
 import pickle
 from text_preprocess import make_prediction, getTfidfVec, prepareDataset, get_prediction_res_by_class
 
@@ -9,10 +8,6 @@ app = Flask(__name__, static_url_path='/static')
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 model = None
-
-NUM_CLASSES = 10
-cifar10_classes = ["airplane", "automobile", "bird", "cat", "deer", 
-                   "dog", "frog", "horse", "ship", "truck"]
 
 @app.route("/")
 def beranda():
